@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Shortly-short you big url</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div align="center">
+		<div style=" width:500px; margin-top:30px">
+<!-- 			<form role="form" method="post" th:action="@{/shortly/url}" th:object="${url_link}">
+				<label>Enter your Url to short : </label>
+				<input type="text" th:field="*{url}">
+				<br>
+				<label>Enter Expire date : </label>
+				<input type="text" th:field="*{expirationDate}">
+				<br>
+				<button type="submit">Press to Short</button>
+			</form> -->
+			
+			<form role="form" method="post" th:action="@{/shortly/url}" th:object="${url_link}">
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Url to be short</label>
+			    <input type="text"  th:field="*{url}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your URL">
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Expire Time</label>
+			    <input type="text" class="form-control"  th:field="*{expirationDate}" id="exampleInputPassword1" placeholder="Expire Time (Optional)">
+			  </div>
+
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			
+			
+			
+		</div>
+		
+
+ 		<div >
+			<p> <br/><br/><br/>
+				<spam th:if="${ urlData?.getShortUrl()}" >http://localhost:8080/<spam th:text="${ urlData?.getShortUrl()}"></spam></spam>
+				
+				<!-- 
+					urlData?.getShortUrl() : by default getShortUrl() == null and if html page call this method
+					then it give me a error 
+					in order to solve null pointer exception in thymeleaf we we pass the value this way
+					remember it's only working thymeleaf 3.0.0 or above.
+				 -->
+			</p>
+		</div> 
+		
+	</div>
+</body>
+</html>
